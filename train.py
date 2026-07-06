@@ -580,7 +580,7 @@ def main():
 
         best_acc = 0.0
         early_stopping_counter = 0
-        os.makedirs("32d", exist_ok=True)
+        os.makedirs("32b", exist_ok=True)
 
         for epoch in range(1, config["epochs"] + 1):
             logger.info(f"折{fold_num} | Epoch {epoch}/{config['epochs']} | LR: {optimizer.param_groups[0]['lr']:.8f}")
@@ -591,7 +591,7 @@ def main():
 
             if val_metrics["acc"] > best_acc:
                 best_acc = val_metrics["acc"]
-                torch.save(model.state_dict(), f"32d/shiyan_fold{fold_num}_best.pth")
+                torch.save(model.state_dict(), f"32b/shiyan_fold{fold_num}_best.pth")
                 logger.info(f"折{fold_num} 保存最优模型: ACC {best_acc:.4f}")
                 early_stopping_counter = 0
             else:
